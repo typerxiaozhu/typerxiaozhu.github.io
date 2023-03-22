@@ -16,21 +16,21 @@
   <meta name="author" content="xiaozhu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="整数二分 二分的本质 二分的本质并不是单调性 本质：定义一个l到rl 到 rl到r的区间，找到一个性质，把区间一分为二，使得左边的一部分不满足性质，右边的一部分满足性质 注意：这两段是没有交点的，问题要保证有解 第一种 二分左边分界点 midmidmid&#x3D;(l+r+1)&#x2F;2(l+r+1)&#x2F;2(l+r+1)&#x2F;2 判断中间值是否满足性质 ​    满足：midmidmid一定在左边，答案在mid到rm">
+    <meta name="description" content="本文主要介绍二分法的原理，以及具体实现方法，并提供了模板代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xiaozhu&#39;s blog">
+<meta property="og:title" content="二分法">
 <meta property="og:url" content="https://typerxiaozhu.github.io/2023/03/22/%E4%BA%8C%E5%88%86/index.html">
 <meta property="og:site_name" content="xiaozhu&#39;s blog">
-<meta property="og:description" content="整数二分 二分的本质 二分的本质并不是单调性 本质：定义一个l到rl 到 rl到r的区间，找到一个性质，把区间一分为二，使得左边的一部分不满足性质，右边的一部分满足性质 注意：这两段是没有交点的，问题要保证有解 第一种 二分左边分界点 midmidmid&#x3D;(l+r+1)&#x2F;2(l+r+1)&#x2F;2(l+r+1)&#x2F;2 判断中间值是否满足性质 ​    满足：midmidmid一定在左边，答案在mid到rm">
+<meta property="og:description" content="本文主要介绍二分法的原理，以及具体实现方法，并提供了模板代码">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-22T13:04:13.726Z">
-<meta property="article:modified_time" content="2023-03-22T14:00:05.428Z">
+<meta property="article:modified_time" content="2023-03-22T14:18:36.146Z">
 <meta property="article:author" content="xiaozhu">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>xiaozhu&#39;s blog</title>
+  <title>二分法 - xiaozhu&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="二分法"></span>
           
         </div>
 
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          587 字
+          1k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          5 分钟
+          9 分钟
         
       </span>
     
@@ -274,7 +274,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">二分法</h1>
             
             
               <div class="markdown-body">
@@ -308,6 +308,8 @@
 <h1>浮点数二分</h1>
 <p>当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mi>l</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mo>−</mo></msup><mn>6</mn></mrow><annotation encoding="application/x-tex">r-l\leq 10^-6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span><span class="mord">6</span></span></span></span></p>
 <p>认为是一个数</p>
+<h1>模板代码</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<span class="hljs-comment">/* ... */</span>&#125; <span class="hljs-comment">// 检查x是否满足某种性质</span><br><br><span class="hljs-comment">// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bsearch_1</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) r = mid;    <span class="hljs-comment">// check()判断mid是否满足性质</span><br>        <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> l;<br>&#125;<br><span class="hljs-comment">// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bsearch_2</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = l + r + <span class="hljs-number">1</span> &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid;<br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> l;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -325,7 +327,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>二分法</div>
       <div>https://typerxiaozhu.github.io/2023/03/22/二分/</div>
     </div>
     <div class="license-meta">
